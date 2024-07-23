@@ -1,0 +1,47 @@
+# Configuration for Cog ⚙️
+# Reference: https://cog.run/yaml
+image: "r8.im/shreejalmaharjan-27/waifu2x"
+build:
+  # set to true if your model requires a GPU
+  gpu: true
+  cuda: "11.8"
+
+
+  # python version in the form '3.11' or '3.11.4'
+  python_version: "3.11"
+
+  python_packages:
+    - torch --extra-index-url https://download.pytorch.org/whl/cu118
+    - torchvision  --extra-index-url https://download.pytorch.org/whl/cu118
+    - numpy < 2.0.0
+    - pillow
+    - tqdm
+    - wand >= 0.6.10
+    - fonttools
+    - scipy
+    - waitress
+    - bottle
+    - diskcache
+    - flake8
+    - psutil
+    - pyyaml
+    - onnx
+    - onnxconverter_common
+    - lpips
+    - packaging
+    - timm
+    - numba 
+    - av >= 12.2.0
+    - rembg
+
+  # commands run after the environment is setup
+  # run:
+  #   - "echo env is ready!"
+  #   - "echo another command if needed"
+  system_packages:
+    - "git-core"
+    - "libmagickwand-dev"
+    - "libraqm-dev"
+
+# predict.py defines how predictions are run on your model
+predict: "predict.py:Predictor"
